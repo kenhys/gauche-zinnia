@@ -16,6 +16,7 @@ SCM_DECL_BEGIN
 extern ScmClass *CZinniaRecognizerClass;
 extern ScmClass *CZinniaCharacterClass;
 extern ScmClass *CZinniaResultClass;
+extern ScmClass *CZinniaTrainerClass;
 
 #define ZINNIA_RECOGNIZER_P(obj)      SCM_XTYPEP(obj, CZinniaRecognizerClass)
 #define ZINNIA_RECOGNIZER_UNBOX(obj)  SCM_FOREIGN_POINTER_REF(zinnia_recognizer_t*, obj)
@@ -28,6 +29,11 @@ extern ScmClass *CZinniaResultClass;
 #define ZINNIA_RESULT_P(obj)      SCM_XTYPEP(obj, CZinniaResultClass)
 #define ZINNIA_RESULT_UNBOX(obj)  SCM_FOREIGN_POINTER_REF(zinnia_result_t*, obj)
 #define ZINNIA_RESULT_BOX(ptr)    Scm_MakeForeignPointer(CZinniaResultClass, ptr)
+
+#define ZINNIA_TRAINER_P(obj)      SCM_XTYPEP(obj, CZinniaTrainerClass)
+#define ZINNIA_TRAINER_UNBOX(obj)  SCM_FOREIGN_POINTER_REF(zinnia_trainer_t*, obj)
+#define ZINNIA_TRAINER_BOX(ptr)    Scm_MakeForeignPointer(CZinniaTrainerClass, ptr)
+
 /*
  * The following entry is a dummy one.
  * Replace it for your declarations.

@@ -13,10 +13,33 @@ ScmClass *CZinniaRecognizerClass;
 ScmClass *CZinniaCharacterClass;
 ScmClass *CZinniaResultClass;
 
-ScmObj test_zinnia(void)
+static void czinnia_recognizer_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
 {
-    return SCM_MAKE_STR("zinnia is working");
 }
+
+static void czinnia_recognizer_cleanup(ScmObj obj)
+{
+}
+
+static void czinnia_character_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
+    
+{
+}
+
+static void czinnia_character_cleanup(ScmObj obj)
+{
+}
+
+static void czinnia_result_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
+{
+}
+
+static void czinnia_result_cleanup(ScmObj obj)
+{
+    zinnia_result_t* q;
+    q = ZINNIA_RESULT_UNBOX(obj);
+}
+
 
 /*
  * Module initialization function.
@@ -32,6 +55,42 @@ void Scm_Init_zinnia(void)
 
     /* Create the module if it doesn't exist yet. */
     mod = SCM_MODULE(SCM_FIND_MODULE("zinnia", TRUE));
+
+  /* Create the foreign pointer class <mqueue-cpp>.
+       The flag SCM_FOREIGN_POINTER_KEEP_IDENTITY makes Gauche to keep
+       one-to-one mapping between the foreign object pointer (MQueue*)
+       and its wrapping ScmObj.  With this flag, you can assume that
+       when mqueue_cleanup is called, no other ScmForeignPointer object
+       is pointing to the same MQueue*, thus you can delete it safely. */
+    CZinniaRecognizerClass =
+        Scm_MakeForeignPointerClass(mod, "<zinnia-recognizer>",
+                                    czinnia_recognizer_print,
+                                    czinnia_recognizer_cleanup,
+                                    SCM_FOREIGN_POINTER_KEEP_IDENTITY|SCM_FOREIGN_POINTER_MAP_NULL);
+
+      /* Create the foreign pointer class <mqueue-cpp>.
+       The flag SCM_FOREIGN_POINTER_KEEP_IDENTITY makes Gauche to keep
+       one-to-one mapping between the foreign object pointer (MQueue*)
+       and its wrapping ScmObj.  With this flag, you can assume that
+       when mqueue_cleanup is called, no other ScmForeignPointer object
+       is pointing to the same MQueue*, thus you can delete it safely. */
+    CZinniaCharacterClass =
+        Scm_MakeForeignPointerClass(mod, "<zinnia-character>",
+                                    czinnia_character_print,
+                                    czinnia_character_cleanup,
+                                    SCM_FOREIGN_POINTER_KEEP_IDENTITY|SCM_FOREIGN_POINTER_MAP_NULL);
+
+      /* Create the foreign pointer class <mqueue-cpp>.
+       The flag SCM_FOREIGN_POINTER_KEEP_IDENTITY makes Gauche to keep
+       one-to-one mapping between the foreign object pointer (MQueue*)
+       and its wrapping ScmObj.  With this flag, you can assume that
+       when mqueue_cleanup is called, no other ScmForeignPointer object
+       is pointing to the same MQueue*, thus you can delete it safely. */
+    CZinniaResultClass =
+        Scm_MakeForeignPointerClass(mod, "<zinnia-result>",
+                                    czinnia_result_print,
+                                    czinnia_result_cleanup,
+                                    SCM_FOREIGN_POINTER_KEEP_IDENTITY|SCM_FOREIGN_POINTER_MAP_NULL);
 
     /* Register stub-generated procedures */
     Scm_Init_zinnialib(mod);

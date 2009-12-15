@@ -16,6 +16,14 @@
 ;;   typedef struct zinnia_recognizer_t zinnia_recognizer_t;
 ;;   typedef struct zinnia_result_t zinnia_result_t;
 ;;   typedef struct zinnia_trainer_t zinnia_trainer_t;
+(define-type <zinnia-character> "zinnia_character_t*" "zinnia-character"
+  "ZINNIA_CHARACTER_P" "ZINNIA_CHARACTER_UNBOX" "ZINNIA_CHARACTER_BOX")
+(define-type <zinnia-recognizer> "zinnia_recognizer_t*" "zinnia-recognizer"
+  "ZINNIA_RECOGNIZER_P" "ZINNIA_RECOGNIZER_UNBOX" "ZINNIA_RECOGNIZER_BOX")
+(define-type <zinnia-result> "zinnia_result_t*" "zinnia-result"
+  "ZINNIA_RESULT_P" "ZINNIA_RESULT_UNBOX" "ZINNIA_RESULT_BOX")
+(define-type <zinnia-trainer> "zinnia_trainer_t*" "zinnia-trainer"
+  "ZINNIA_TRAINER_P" "ZINNIA_TRAINER_UNBOX" "ZINNIA_TRAINER_BOX")
 
 ;;   /* C interface */
 ;;   ZINNIA_DLL_EXTERN int zinnia_do(int argc, char **argv);
@@ -27,30 +35,139 @@
 
 ;;   /* character */
 ;;   ZINNIA_DLL_EXTERN zinnia_character_t*  zinnia_character_new();
+(define-cproc zinnia-chracter-new ()
+  (body <zinnia-character>
+        "SCM_RESULT = zinnia_character_new();"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_destroy(zinnia_character_t *character);
+(define-cproc zinnia-chracter-destroy
+  (character::<zinnia-character>)
+  (body <void>
+        "zinnia_character_destroy(character);"))
+
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_value(zinnia_character_t *character, const char *str);
+(define-cproc zinnia-chracter-set-value
+  (ch::<zinnia-character>
+   str::<const-cstring>)
+  (body <void>
+        "zinnia_character_set_value(ch, str);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_value2(zinnia_character_t *character, const char *str, size_t length);
+(define-cproc zinnia-chracter-set-value2
+  (ch::<zinnia-character>
+   str::<const-cstring>
+   length::<int>)
+  (body <void>
+        "zinnia_character_set_value2(ch, str, length);"))
 ;;   ZINNIA_DLL_EXTERN const char *zinnia_character_value(zinnia_character_t *character);
+(define-cproc zinnia-chracter-value
+  (ch::<zinnia-character>)
+  (body <const-cstring>
+        "zinnia_character_value(ch);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_width(zinnia_character_t *character, size_t width);
+(define-cproc zinnia-chracter-set-width
+  (ch::<zinnia-character>
+   width::<int>)
+  (body <void>
+        "zinnia_character_set_width(ch, width);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_height(zinnia_character_t *character, size_t height);
+(define-cproc zinnia-chracter-set-height
+  (ch::<zinnia-character>
+   height::<int>)
+  (body <void>
+        "zinnia_character_set_height(ch, height);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_width(zinnia_character_t *character);
+(define-cproc zinnia-chracter-width
+  (ch::<zinnia-character>)
+  (body <void>
+        "zinnia_character_width(ch);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_height(zinnia_character_t *character);
+(define-cproc zinnia-chracter-height
+  (ch::<zinnia-character>)
+  (body <void>
+        "zinnia_character_height(ch);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_clear(zinnia_character_t *stroke);
+(define-cproc zinnia-chracter-clear
+  (ch::<zinnia-character>)
+  (body <void>
+        "zinnia_character_clear(ch);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_add(zinnia_character_t *character, size_t id, int x, int y);
+(define-cproc zinnia-chracter-add
+  (ch::<zinnia-character>
+   id::<int>
+   x::<int>
+   y::<int>)
+  (body <int>
+        "SCM_RESULT = zinnia_character_add(ch, id, x, y);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_strokes_size(zinnia_character_t *character);
-;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_stroke_size(zinnia_character_t *character, size_t id);
+(define-cproc zinnia-chracter-strokes-size
+  (ch::<zinnia-character>)
+   (body <int> "SCM_RESULT = zinnia_character_strokes_size(ch);"))
+
+   ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_stroke_size(zinnia_character_t *character, size_t id);
+(define-cproc zinnia-chracter-stroke-size
+  (ch::<zinnia-character>
+   id::<int>)
+   (body <int> "SCM_RESULT = zinnia_character_stroke_size(ch, id);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_x(zinnia_character_t *character, size_t id, size_t i);
+(define-cproc zinnia-chracter-x
+  (ch::<zinnia-character>
+   id::<int>
+   i::<int>)
+   (body <int> "SCM_RESULT = zinnia_character_x(ch, id, i);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_y(zinnia_character_t *character, size_t id, size_t i);
+(define-cproc zinnia-chracter-y
+  (ch::<zinnia-character>
+   id::<int>
+   i::<int>)
+   (body <int> "SCM_RESULT = zinnia_character_y(ch, id, i);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_parse(zinnia_character_t *character, const char *str);
+(define-cproc zinnia-chracter-parse
+  (ch::<zinnia-character>
+   str::<const-cstring>)
+   (body <int> "SCM_RESULT = zinnia_character_parse(ch, str);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_parse2(zinnia_character_t *character, const char *str, size_t length);
+(define-cproc zinnia-chracter-parse2
+  (ch::<zinnia-character>
+   str::<const-cstring>
+   length::<int>)
+   (body <int> "SCM_RESULT = zinnia_character_parse2(ch, str, length);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_to_string(zinnia_character_t *character, char *buf, size_t length);
+;; NOTE map scmstring to char*
+(define-cproc zinnia-chracter-to-string
+  (ch::<zinnia-character>
+   buf::<string>)
+   (body <int>
+         "char *buf;"
+;;         "SCM_RESULT = zinnia_character_to_string(ch, str, length);"
+         ))
 ;;   ZINNIA_DLL_EXTERN const char* zinnia_character_strerror(zinnia_character_t *character);
+(define-cproc zinnia-chracter-strerror
+  (ch::<zinnia-character>)
+   (body <const-cstring>
+         "SCM_RESULT = zinnia_character_strerror(ch);"))
 
 ;;   /* Recognizer::Result */
 ;;   ZINNIA_DLL_EXTERN const char *zinnia_result_value(zinnia_result_t *result, size_t i);
+(define-cproc zinnia-result-value
+  (result::<zinnia-result>
+   i::<int>)
+  (body <const-cstring>
+        "SCM_RESULT = zinnia_result_value(result, i);"))
 ;;   ZINNIA_DLL_EXTERN float       zinnia_result_score(zinnia_result_t *result, size_t i);
+(define-cproc zinnia-result-score
+  (result::<zinnia-result>
+   i::<int>)
+  (body <float>
+        "SCM_RESULT = zinnia_result_score(result, i);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_result_size(zinnia_result_t *result);
+(define-cproc zinnia-result-size
+  (result::<zinnia-result>)
+  (body <int>
+        "SCM_RESULT = zinnia_result_size(result);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_result_destroy(zinnia_result_t *result);
+(define-cproc zinnia-result-destroy
+  (result::<zinnia-result>)
+  (body <void>
+        "zinnia_result_destroy(result);"))
 
 ;;   /* Recognizer */
 ;;   ZINNIA_DLL_EXTERN zinnia_recognizer_t *zinnia_recognizer_new();
