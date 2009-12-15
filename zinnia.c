@@ -9,6 +9,10 @@
  * your C function definitions.
  */
 
+ScmClass *CZinniaRecognizerClass;
+ScmClass *CZinniaCharacterClass;
+ScmClass *CZinniaResultClass;
+
 ScmObj test_zinnia(void)
 {
     return SCM_MAKE_STR("zinnia is working");

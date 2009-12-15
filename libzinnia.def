@@ -1,14 +1,5 @@
 LIBRARY libzinnia.dll
 EXPORTS
-?convert@Trainer@zinnia@@SA_NPBD0N@Z
-?create@Character@zinnia@@SAPAV12@XZ
-?create@Recognizer@zinnia@@SAPAV12@XZ
-?create@Trainer@zinnia@@SAPAV12@XZ
-?createCharacter@zinnia@@YAPAVCharacter@1@XZ
-?createRecognizer@zinnia@@YAPAVRecognizer@1@XZ
-?createTrainer@zinnia@@YAPAVTrainer@1@XZ
-?makeHeader@Trainer@zinnia@@SA_NPBD00N@Z
-?version@zinnia@@YAPBDXZ
 zinnia_character_add
 zinnia_character_clear
 zinnia_character_destroy

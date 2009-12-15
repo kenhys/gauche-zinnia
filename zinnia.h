@@ -11,6 +11,23 @@
 
 SCM_DECL_BEGIN
 
+#include "libzinnia.h"
+
+extern ScmClass *CZinniaRecognizerClass;
+extern ScmClass *CZinniaCharacterClass;
+extern ScmClass *CZinniaResultClass;
+
+#define ZINNIA_RECOGNIZER_P(obj)      SCM_XTYPEP(obj, CZinniaRecognizerClass)
+#define ZINNIA_RECOGNIZER_UNBOX(obj)  SCM_FOREIGN_POINTER_REF(zinnia_recognizer_t*, obj)
+#define ZINNIA_RECOGNIZER_BOX(ptr)    Scm_MakeForeignPointer(CZinniaRecognizerClass, ptr)
+
+#define ZINNIA_CHARACTER_P(obj)      SCM_XTYPEP(obj, CZinniaCharacterClass)
+#define ZINNIA_CHARACTER_UNBOX(obj)  SCM_FOREIGN_POINTER_REF(zinnia_character_t*, obj)
+#define ZINNIA_CHARACTER_BOX(ptr)    Scm_MakeForeignPointer(CZinniaCharacterClass, ptr)
+
+#define ZINNIA_RESULT_P(obj)      SCM_XTYPEP(obj, CZinniaResultClass)
+#define ZINNIA_RESULT_UNBOX(obj)  SCM_FOREIGN_POINTER_REF(zinnia_result_t*, obj)
+#define ZINNIA_RESULT_BOX(ptr)    Scm_MakeForeignPointer(CZinniaResultClass, ptr)
 /*
  * The following entry is a dummy one.
  * Replace it for your declarations.

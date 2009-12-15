@@ -13,6 +13,7 @@
 (test* "test-zinnia" "zinnia is working"
        (test-zinnia))
 
+(test* "0.5" "0.5" (zinnia-version))
 ;; epilogue
 (test-end)
 

@@ -68,7 +68,7 @@ function cb_clean ()
 function cb_test ()
 {
         #$GOSH -I. test/test-demon.scm
-    $GOSH -I. test/test-nqueen.scm
+    $GOSH -I. test.scm
 }
 
 
