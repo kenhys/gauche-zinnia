@@ -171,32 +171,112 @@
 
 ;;   /* Recognizer */
 ;;   ZINNIA_DLL_EXTERN zinnia_recognizer_t *zinnia_recognizer_new();
+(define-cproc zinnia-recognizer-new ()
+  (body <zinnia-recognizer>
+        "SCM_RESULT = zinnia_recognizer_new();"))
 ;;   ZINNIA_DLL_EXTERN void                zinnia_recognizer_destroy(zinnia_recognizer_t *recognizer);
+(define-cproc zinnia-recognizer-destroy
+  (reg::<zinnia-recognizer>)
+  (body <void>
+        "zinnia_recognizer_destroy(reg);"))
 ;;   ZINNIA_DLL_EXTERN int                 zinnia_recognizer_open(zinnia_recognizer_t *recognizer, const char *filename);
+(define-cproc zinnia-recognizer-open
+  (reg::<zinnia-recognizer>
+   filename::<const-cstring>)
+  (body <int>
+        "SCM_RESULT = zinnia_recognizer_open(reg, filename);"))
 ;;   ZINNIA_DLL_EXTERN int                 zinnia_recognizer_open_from_ptr(zinnia_recognizer_t *recognizer,
 ;;                                                                         const char *ptr, size_t size);
+;; NEED PORT IMPLEMENTATION?
+;; (define-cproc zinnia-recognizer-open-from-ptr
+;;   (reg::<zinnia-recognizer>
+;;    filename::<const-cstring>)
+;;   (body <int>
+;;         "SCM_RESULT = zinnia_recognizer_open(reg, filename);"))
+
 ;;   ZINNIA_DLL_EXTERN int                 zinnia_recognizer_close(zinnia_recognizer_t *recognizer);
+(define-cproc zinnia-recognizer-close
+  (reg::<zinnia-recognizer>)
+  (body <int>
+        "SCM_RESULT = zinnia_recognizer_close(reg);"))
 ;;   ZINNIA_DLL_EXTERN size_t              zinnia_recognizer_size(zinnia_recognizer_t *recognizer);
+(define-cproc zinnia-recognizer-size
+  (reg::<zinnia-recognizer>)
+  (body <int>
+        "SCM_RESULT = zinnia_recognizer_size(reg);"))
 ;;   ZINNIA_DLL_EXTERN const char         *zinnia_recognizer_value(zinnia_recognizer_t *recognizer, size_t i);
+(define-cproc zinnia-recognizer-value
+  (reg::<zinnia-recognizer>
+   i::<int>)
+  (body <const-cstring>
+        "SCM_RESULT = zinnia_recognizer_value(reg, i);"))
 ;;   ZINNIA_DLL_EXTERN const char*         zinnia_recognizer_strerror(zinnia_recognizer_t *recognizer);
+(define-cproc zinnia-recognizer-strerror
+  (reg::<zinnia-recognizer>)
+  (body <const-cstring>
+        "SCM_RESULT = zinnia_recognizer_strerror(reg);"))
 ;;   ZINNIA_DLL_EXTERN zinnia_result_t *zinnia_recognizer_classify(zinnia_recognizer_t *recognizer,
 ;;                                                                 const zinnia_character_t *character,
 ;;                                                                 size_t nbest);
+(define-cproc zinnia-recognizer-classify
+  (reg::<zinnia-recognizer>
+   ch::<zinnia-character>
+   nbest::<int>)
+  (body <zinnia-result>
+        "SCM_RESULT = zinnia_recognizer_classify(reg, ch, nbest);"))
 
 ;;   /* Trainer */
 ;;   ZINNIA_DLL_EXTERN zinnia_trainer_t *zinnia_trainer_new();
+(define-cproc zinnia-trainer-new ()
+  (body <zinnia-trainer>
+        "SCM_RESULT = zinnia_trainer_new();"))
 ;;   ZINNIA_DLL_EXTERN void             zinnia_trainer_destroy(zinnia_trainer_t *trainer);
+(define-cproc zinnia-trainer-destroy
+  (t::<zinnia-trainer>)
+  (body <void>
+        "zinnia_trainer_destroy(t);"))
 ;;   ZINNIA_DLL_EXTERN int              zinnia_trainer_add(zinnia_trainer_t *trainer, const zinnia_character_t* character);
+(define-cproc zinnia-trainer-add
+  (t::<zinnia-trainer>
+   ch::<zinnia-character>)
+  (body <int>
+        "SCM_RESULT = zinnia_trainer_add(t, ch);"))
 ;;   ZINNIA_DLL_EXTERN void             zinnia_trainer_clear(zinnia_trainer_t *trainer);
+(define-cproc zinnia-trainer-clear
+  (t::<zinnia-trainer>)
+  (body <void>
+        "zinnia_trainer_clear(t);"))
 ;;   ZINNIA_DLL_EXTERN int              zinnia_trainer_train(zinnia_trainer_t *trainer, const char *filename);
+(define-cproc zinnia-trainer-train
+  (t::<zinnia-trainer>
+   filename::<const-cstring>)
+  (body <int>
+        "SCM_RESULT = zinnia_trainer_train(t, filename);"))
 ;;   ZINNIA_DLL_EXTERN const char      *zinnia_trainer_strerror(zinnia_trainer_t *trainer);
+(define-cproc zinnia-trainer-strerror
+  (t::<zinnia-trainer>)
+  (body <const-cstring>
+        "SCM_RESULT = zinnia_trainer_strerror(t);"))
 ;;   ZINNIA_DLL_EXTERN int              zinnia_trainer_convert_model(const char *txt_model,
 ;;                                                                   const char *binary_model,
 ;;                                                                   double compression_threshold);
+(define-cproc zinnia-trainer-convert-model
+  (txt::<const-cstring>
+   bin::<const-cstring>
+   comp::<double>)
+  (body <int>
+        "SCM_RESULT = zinnia_trainer_convert_model(txt, bin, comp);"))
 ;;   ZINNIA_DLL_EXTERN int              zinnia_trainer_make_header(const char *txt_model,
 ;;                                                                 const char *header_file,
 ;;                                                                 const char *name,
 ;;                                                                 double compression_threshold);
+(define-cproc zinnia-trainer-make-header
+  (txt::<const-cstring>
+   header::<const-cstring>
+   name::<const-cstring>
+   comp::<double>)
+  (body <int>
+        "SCM_RESULT = zinnia_trainer_make_header(txt, header, name, comp);"))
 
 ;; Local variables:
 ;; mode: scheme

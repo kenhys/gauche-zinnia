@@ -12,6 +12,7 @@
 ScmClass *CZinniaRecognizerClass;
 ScmClass *CZinniaCharacterClass;
 ScmClass *CZinniaResultClass;
+ScmClass *CZinniaTrainerClass;
 
 static void czinnia_recognizer_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
 {
