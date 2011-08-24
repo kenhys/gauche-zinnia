@@ -4,6 +4,7 @@
 
 (use gauche.test)
 (use gauche.interactive)
+(use gauche.charconv)
 (use file.util)
 (test-start "zinnia")
 (use zinnia)
@@ -43,8 +44,12 @@
 (define r (zinnia-recognizer-classify recognizer character 10))
 (d r)
 (d (zinnia-result-size r))
-(d (zinnia-result-value r 0))
+(print (ces-convert (zinnia-result-value r 0) "*JP" "SJIS"))
 (d (zinnia-result-score r 0))
+(print (ces-convert (zinnia-result-value r 1) "*JP" "SJIS"))
+(d (zinnia-result-score r 1))
+(print (ces-convert (zinnia-result-value r 9) "*JP" "SJIS"))
+(d (zinnia-result-score r 9))
 ;; epilogue
 (test-end)
 
