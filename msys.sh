@@ -41,6 +41,7 @@ function cb_build ()
         if [ $? -ne 0 ]; then
             exit
         fi
+        #com="LANG=C gcc -lmingw32 `gauche-config --dylib-ldflags` gauche--zinnia.dll *.o  -L. -lzinnia -L$GDIST_LIBDIR -lgauche-0.9"
         com="LANG=C gcc -lmingw32 `gauche-config --dylib-ldflags` zinnia.dll *.o  -L. -lzinnia -L$GDIST_LIBDIR -lgauche-0.9"
         echo $com
         eval $com

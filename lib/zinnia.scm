@@ -3,8 +3,7 @@
 ;;;
 
 (define-module zinnia
-  (export test-zinnia ;; dummy
-          )
+  (export-all)
   )
 (select-module zinnia)
 
