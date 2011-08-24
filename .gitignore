@@ -1,0 +1,9 @@
+log
+autom4te.cache
+config.status
+configure
+*.orig
+*_head.c
+*_tail.c
+*.dll
+*.log
