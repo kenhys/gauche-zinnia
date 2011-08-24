@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8-unix -*-
 
-GDIST_DIR=/c/apps/Gauche-mingw-0.9
+GDIST_DIR=/c/apps/Gauche-mingw-0.9.2
 GOSH=gosh
 CFLAGS="-DHAVE_BOOL"
 
@@ -41,7 +41,7 @@ function cb_build ()
         if [ $? -ne 0 ]; then
             exit
         fi
-        com="LANG=C gcc -lmingw32 `gauche-config --dylib-ldflags` zinnia.dll *.o  -L. -lzinnia -L$GDIST_LIBDIR -lgauche"
+        com="LANG=C gcc -lmingw32 `gauche-config --dylib-ldflags` zinnia.dll *.o  -L. -lzinnia -L$GDIST_LIBDIR -lgauche-0.9"
         echo $com
         eval $com
         if [ $? -ne 0 ]; then
@@ -115,10 +115,10 @@ while [ $# -gt 0 ]; do
     esac
 done
 
-GDIST_INCDIR=$GDIST_DIR/lib/gauche/0.9/include
+GDIST_INCDIR=$GDIST_DIR/lib/gauche-0.9/0.9.2/include
 GDIST_LIBDIR=$GDIST_DIR/bin
 GAUCHE_CONFIG=$GDIST_DIR/bin/gauche-config
-GENSTUB=$GDIST_DIR/share/gauche/0.9/lib/genstub
+GENSTUB=$GDIST_DIR/share/gauche-0.9/0.9.2/lib/genstub
 export PATH=$GDIST_DIR:$PATH
 
 if [ $CB_BUILD -eq 1 ]; then
