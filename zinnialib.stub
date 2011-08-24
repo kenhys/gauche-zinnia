@@ -35,62 +35,62 @@
 
 ;;   /* character */
 ;;   ZINNIA_DLL_EXTERN zinnia_character_t*  zinnia_character_new();
-(define-cproc zinnia-chracter-new ()
+(define-cproc zinnia-character-new ()
   (body <zinnia-character>
         "SCM_RESULT = zinnia_character_new();"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_destroy(zinnia_character_t *character);
-(define-cproc zinnia-chracter-destroy
+(define-cproc zinnia-character-destroy
   (character::<zinnia-character>)
   (body <void>
         "zinnia_character_destroy(character);"))
 
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_value(zinnia_character_t *character, const char *str);
-(define-cproc zinnia-chracter-set-value
+(define-cproc zinnia-character-set-value
   (ch::<zinnia-character>
    str::<const-cstring>)
   (body <void>
         "zinnia_character_set_value(ch, str);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_value2(zinnia_character_t *character, const char *str, size_t length);
-(define-cproc zinnia-chracter-set-value2
+(define-cproc zinnia-character-set-value2
   (ch::<zinnia-character>
    str::<const-cstring>
    length::<int>)
   (body <void>
         "zinnia_character_set_value2(ch, str, length);"))
 ;;   ZINNIA_DLL_EXTERN const char *zinnia_character_value(zinnia_character_t *character);
-(define-cproc zinnia-chracter-value
+(define-cproc zinnia-character-value
   (ch::<zinnia-character>)
   (body <const-cstring>
         "zinnia_character_value(ch);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_width(zinnia_character_t *character, size_t width);
-(define-cproc zinnia-chracter-set-width
+(define-cproc zinnia-character-set-width
   (ch::<zinnia-character>
    width::<int>)
   (body <void>
         "zinnia_character_set_width(ch, width);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_set_height(zinnia_character_t *character, size_t height);
-(define-cproc zinnia-chracter-set-height
+(define-cproc zinnia-character-set-height
   (ch::<zinnia-character>
    height::<int>)
   (body <void>
         "zinnia_character_set_height(ch, height);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_width(zinnia_character_t *character);
-(define-cproc zinnia-chracter-width
+(define-cproc zinnia-character-width
   (ch::<zinnia-character>)
   (body <void>
         "zinnia_character_width(ch);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_height(zinnia_character_t *character);
-(define-cproc zinnia-chracter-height
+(define-cproc zinnia-character-height
   (ch::<zinnia-character>)
   (body <void>
         "zinnia_character_height(ch);"))
 ;;   ZINNIA_DLL_EXTERN void        zinnia_character_clear(zinnia_character_t *stroke);
-(define-cproc zinnia-chracter-clear
+(define-cproc zinnia-character-clear
   (ch::<zinnia-character>)
   (body <void>
         "zinnia_character_clear(ch);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_add(zinnia_character_t *character, size_t id, int x, int y);
-(define-cproc zinnia-chracter-add
+(define-cproc zinnia-character-add
   (ch::<zinnia-character>
    id::<int>
    x::<int>
@@ -98,41 +98,41 @@
   (body <int>
         "SCM_RESULT = zinnia_character_add(ch, id, x, y);"))
 ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_strokes_size(zinnia_character_t *character);
-(define-cproc zinnia-chracter-strokes-size
+(define-cproc zinnia-character-strokes-size
   (ch::<zinnia-character>)
    (body <int> "SCM_RESULT = zinnia_character_strokes_size(ch);"))
 
    ;;   ZINNIA_DLL_EXTERN size_t      zinnia_character_stroke_size(zinnia_character_t *character, size_t id);
-(define-cproc zinnia-chracter-stroke-size
+(define-cproc zinnia-character-stroke-size
   (ch::<zinnia-character>
    id::<int>)
    (body <int> "SCM_RESULT = zinnia_character_stroke_size(ch, id);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_x(zinnia_character_t *character, size_t id, size_t i);
-(define-cproc zinnia-chracter-x
+(define-cproc zinnia-character-x
   (ch::<zinnia-character>
    id::<int>
    i::<int>)
    (body <int> "SCM_RESULT = zinnia_character_x(ch, id, i);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_y(zinnia_character_t *character, size_t id, size_t i);
-(define-cproc zinnia-chracter-y
+(define-cproc zinnia-character-y
   (ch::<zinnia-character>
    id::<int>
    i::<int>)
    (body <int> "SCM_RESULT = zinnia_character_y(ch, id, i);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_parse(zinnia_character_t *character, const char *str);
-(define-cproc zinnia-chracter-parse
+(define-cproc zinnia-character-parse
   (ch::<zinnia-character>
    str::<const-cstring>)
    (body <int> "SCM_RESULT = zinnia_character_parse(ch, str);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_parse2(zinnia_character_t *character, const char *str, size_t length);
-(define-cproc zinnia-chracter-parse2
+(define-cproc zinnia-character-parse2
   (ch::<zinnia-character>
    str::<const-cstring>
    length::<int>)
    (body <int> "SCM_RESULT = zinnia_character_parse2(ch, str, length);"))
 ;;   ZINNIA_DLL_EXTERN int         zinnia_character_to_string(zinnia_character_t *character, char *buf, size_t length);
 ;; NOTE map scmstring to char*
-(define-cproc zinnia-chracter-to-string
+(define-cproc zinnia-character-to-string
   (ch::<zinnia-character>
    buf::<string>)
    (body <int>
@@ -140,7 +140,7 @@
 ;;         "SCM_RESULT = zinnia_character_to_string(ch, str, length);"
          ))
 ;;   ZINNIA_DLL_EXTERN const char* zinnia_character_strerror(zinnia_character_t *character);
-(define-cproc zinnia-chracter-strerror
+(define-cproc zinnia-character-strerror
   (ch::<zinnia-character>)
    (body <const-cstring>
          "SCM_RESULT = zinnia_character_strerror(ch);"))
