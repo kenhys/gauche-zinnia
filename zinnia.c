@@ -16,29 +16,37 @@ ScmClass *CZinniaTrainerClass;
 
 static void czinnia_recognizer_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
 {
+  zinnia_recognizer_t *p = ZINNIA_RECOGNIZER_UNBOX(obj);
+  Scm_Printf(out, "#<zinnia_recognizer_t \"%p\">", p);
 }
 
 static void czinnia_recognizer_cleanup(ScmObj obj)
 {
+  zinnia_recognizer_t *p = ZINNIA_RECOGNIZER_UNBOX(obj);
 }
 
 static void czinnia_character_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
     
 {
+  zinnia_character_t *p = ZINNIA_CHARACTER_UNBOX(obj);
+  Scm_Printf(out, "#<zinnia_character_t \"%p\">", p);
 }
 
 static void czinnia_character_cleanup(ScmObj obj)
 {
+  zinnia_character_t *p = ZINNIA_CHARACTER_UNBOX(obj);
 }
 
 static void czinnia_result_print(ScmObj obj, ScmPort *out, ScmWriteContext *ctx)
 {
+  zinnia_result_t *p = ZINNIA_RESULT_UNBOX(obj);
+  Scm_Printf(out, "#<zinnia_result_t \"%p\">", p);
 }
 
 static void czinnia_result_cleanup(ScmObj obj)
 {
-    zinnia_result_t* q;
-    q = ZINNIA_RESULT_UNBOX(obj);
+  zinnia_result_t* q;
+  q = ZINNIA_RESULT_UNBOX(obj);
 }
 
 
