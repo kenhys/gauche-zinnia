@@ -6,6 +6,10 @@
 (use gauche.interactive)
 (use gauche.charconv)
 (use file.util)
+(use sxml.ssax)
+(use sxml.sxpath)
+(use sxml.tools)
+
 (test-start "zinnia")
 (use zinnia)
 (test-module 'zinnia)
@@ -51,6 +55,10 @@
 (d (zinnia-result-score r 1))
 (print (ces-convert (zinnia-result-value r 9) "*JP" "SJIS"))
 (d (zinnia-result-score r 9))
+
+(define sxml (call-with-input-file (sys-realpath "test/data/a.xml") (lambda (port) (ssax:xml->sxml port '()))))
+(d ((sxpath "PAGE/ELEMENTS/stroke[1]") sxml))
+
 ;; epilogue
 (test-end)
 
