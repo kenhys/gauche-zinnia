@@ -57,7 +57,8 @@
 (d (zinnia-result-score r 9))
 
 (define sxml (call-with-input-file (sys-realpath "test/data/a.xml") (lambda (port) (ssax:xml->sxml port '()))))
-(d ((sxpath "PAGE/ELEMENTS/stroke[1]") sxml))
+(d (cdar ((sxpath "PAGE/ELEMENTS/stroke[1]/x") sxml)))
+(d (cdar ((sxpath "PAGE/ELEMENTS/stroke[1]/y") sxml)))
 
 ;; epilogue
 (test-end)
