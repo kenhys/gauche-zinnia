@@ -60,6 +60,10 @@ dnl Add your macro calls to check existence of programs, if you have any.
 dnl Check for libraries
 dnl Add your macro calls to check required libraries, if you have any.
 
+dnl This is required to test trunc and rint below
+AC_CHECK_LIB(zinnia, zinnia_version)
+
+
 dnl Creating gpd (gauche package description) file
 GAUCHE_PACKAGE_CONFIGURE_ARGS="`echo ""$ac_configure_args"" | sed 's/[\\""\`\$]/\\\&/g'`"
 AC_MSG_NOTICE([creating ${PACKAGE_NAME}.gpd])
